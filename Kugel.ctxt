@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Kugel
+comment0.text=\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Kugel.\n\ \n\ @author\ \ \ \ \ \ mike_gans@yahoo.de\n\ \n\ @version\ \ \ \ \ 4.0\ (2018-08-07)\n
+comment1.params=x\ y
+comment1.target=Kugel(int,\ int)
+comment1.text=\n\ Konstruktor\ der\ Klasse\ Kugel\n
+numComments=2

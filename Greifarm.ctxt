@@ -1,0 +1,32 @@
+#BlueJ class context
+comment0.target=Greifarm
+comment0.text=\n\ Klasse\ Greifarm.\n\ \n\ @author\ \ \ \ \ \ mike_gans@yahoo.de\n\ \n\ @version\ \ \ \ \ v4.0\ (2018-08-7)\n
+comment1.params=
+comment1.target=Greifarm()
+comment1.text=\n\ Konstruktor\ der\ Klasse\ Greifarm\n
+comment10.params=
+comment10.target=void\ tick()
+comment2.params=winkel
+comment2.target=void\ drehenUm(int)
+comment2.text=\n\ Dreht\ den\ Greifarm\ um\ den\ angegebenen\ Winkel.\ \n\ Gegen\ den\ Uhrzeigersinn\ \=\ positive\ Winkel\ ;\ Mit\ dem\ Uhrzeigersinn\ \=\ negativer\ Winkel\ \n\n\ @param\ \ \ winkel\ \ \ \ \ \ Der\ Winkel,\ um\ den\ gedreht\ werden\ soll\n
+comment3.params=
+comment3.target=void\ greifen()
+comment4.params=
+comment4.target=void\ loslassen()
+comment4.text=\n\ L\u00E4sst\ die\ gegriffene\ Kugel\ los.\ \n\ Tut\ nichts,\ wenn\ gerade\ keine\ Kugel\ gegriffen\ wird.\n\n
+comment5.params=
+comment5.target=java.lang.String\ nenneFarbe()
+comment5.text=\n\ Nennt\ die\ Farbe\ der\ aktuell\ gegriffenen\ Kugel.\ \n\ Wird\ gerade\ keine\ Kugel\ gegriffen,\ so\ wird\ "keine\ Kugel"\ gemeldet.\n\n\ @return\ \ \ \ \ \ Die\ Farbe\ der\ aktuell\ gegriffenen\ Kugel\n
+comment6.params=
+comment6.target=int\ nenneWinkel()
+comment6.text=\n\ Nennt\ den\ aktuellen\ Drehwinkel\ des\ Greifarms.\ \n\n\ @return\ \ \ \ \ \ Der\ aktuelle\ Drehwinkel\ des\ Greifarms\n
+comment7.params=kugeln
+comment7.target=void\ nimmReferenzAufKugeln(java.util.LinkedList)
+comment7.text=\n\ Mit\ dieser\ Methode\ kann\ der\ Greifarm\ eine\ Referenz\ auf\ die\ Kugeln\ erhalten.\ \n\n\ @param\ \ \ kugeln\ \ \ \ \ \ Referenz\ auf\ die\ LinkedList\ von\ Kugeln\ der\ Klasse\ Greifi\n
+comment8.params=links\ rechts
+comment8.target=void\ nimmReferenzAufEimer(Eimer,\ Eimer)
+comment8.text=\n\ Mit\ dier\ Methode\ kann\ der\ Greifarm\ eine\ Referenz\ auf\ seine\ Eimer\ erhalten.\ \n\n\ @param\ \ \ links\ \ \ \ \ \ \ Referenz\ auf\ linken\ Eimer\n\ @param\ \ \ rechts\ \ \ \ \ \ Referenz\ auf\ rechen\ Eimer\n
+comment9.params=
+comment9.target=boolean\ hatKugel()
+comment9.text=\n\ Gibt\ an,\ ob\ der\ Greifarm\ gerade\ eine\ Kugel\ hat\ oder\ leer\ ist.\ \n\n\ @return\ \ \ \ \ \ 'true'\ \=\ hat\ Kugel\ ;\ 'false'\ \=\ ist\ leer\n
+numComments=11
