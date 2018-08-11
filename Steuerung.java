@@ -4,13 +4,19 @@
  * 
  * @author      mike_gans@yahoo.de
  * 
- * @version     4.0 (2018-08-07)
+ * @version     4.0 (2018-08-11)
  */
 public class Steuerung 
 extends SPIEL
 {
     private Eimer eimer_links;
     private Eimer eimer_rechts;
+    
+    private DREIECK reflektor_LL;
+    private DREIECK reflektor_LR;
+    
+    private DREIECK reflektor_RL;
+    private DREIECK reflektor_RR;
     
     private Fliessband fliessband;
     
@@ -32,6 +38,24 @@ extends SPIEL
         // SPIEL.zeigeKoordinatensystem( true );
         this.eimer_links = new Eimer( -280 , -220 , "rot" );
         this.eimer_rechts = new Eimer( 280 , -220 , "blau" );
+        
+        this.reflektor_LL = new DREIECK( -175 , -130 , -175 , -300 , -230 , -300 );
+        this.reflektor_LL.machePassiv();
+        this.reflektor_LL.setzeSichtbar( false );
+        this.reflektor_LL.setzeElastizitaet( 0.5f );
+        this.reflektor_LR = new DREIECK( -385 , -130 , -340 , -300 , -385 , -300 );
+        this.reflektor_LR.machePassiv();
+        this.reflektor_LR.setzeSichtbar( false );
+        this.reflektor_LR.setzeElastizitaet( 0.5f );
+        
+        this.reflektor_RL = new DREIECK( 170 , -130 , 170 , -300 , 225 , -300 );
+        this.reflektor_RL.machePassiv();
+        this.reflektor_RL.setzeSichtbar( false );
+        this.reflektor_RL.setzeElastizitaet( 0.5f );
+        this.reflektor_RR = new DREIECK( 380 , -130 , 335 , -300 , 380 , -300 );
+        this.reflektor_RR.machePassiv();
+        this.reflektor_RR.setzeSichtbar( false );
+        this.reflektor_RR.setzeElastizitaet( 0.5f );
         
         this.fliessband = new Fliessband();
         
@@ -100,9 +124,29 @@ extends SPIEL
      *
      * @param   grad    Grösse des Winkels ( Uhrzeigersinn = negative Zahl , gegen Uhrzeigersinn = positive Zahl
      */
-    public void drehenUm( int grad )
+    private void drehenUm( int grad )
     {
         this.greifarm.drehenUm( grad );
+    }
+    
+    
+    /**
+     * Setzt die Richtung des Greifarms auf einen bestimmten Winkel. 
+     * Der Winkel 0 ist rechts bei "3 Uhr". 
+     * Wir verwenden den mathematischen Drehsinn.
+     *
+     * @param   grad    angestrebter Winkel (sinnvoll: 0-180)
+     */
+    public void setzeWinkel( int grad )
+    {
+        if ( grad >= 0  &&  grad <= 180 )
+        {
+            this.greifarm.drehenUm( grad - this.greifarm.nenneWinkel() );
+        }
+        else
+        {
+            System.out.println( "Sinnvolle Winkel für die Orientierung des Greifarms sind 0-180°" );
+        }
     }
     
     
