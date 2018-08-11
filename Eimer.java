@@ -4,7 +4,7 @@
  * 
  * @author      mike_gans@yahoo.de
  * 
- * @version     4.0 (2018-08-07)
+ * @version     4.0 (2018-08-11)
  */
 public class Eimer 
 implements ea.edu.EduActor
@@ -13,6 +13,7 @@ implements ea.edu.EduActor
     private FIGUR oben;
     private TEXT beschriftung;
     private int zaehler;
+    private KREIS detektor;
     
 
     /**
@@ -48,6 +49,10 @@ implements ea.edu.EduActor
             this.beschriftung.setzeEbene( 3 );
         }
         
+        this.detektor = new KREIS( 25 );
+        this.detektor.setzeMittelpunkt( x , y-25 );
+        this.detektor.setzeEbene( 1 );
+        
         this.zaehler = 0;
         inEngineCollisionDetection();
     }
@@ -63,8 +68,24 @@ implements ea.edu.EduActor
         this.beschriftung.setzeInhalt( ""+(int)this.zaehler );
     }
     
+    
+    
+    // public void inEngineCollisionDetection() {
+        // unten.addCollisionListener(new ea.collision.CollisionListener<ea.actor.Actor>() {
+            // public void onCollision(ea.collision.CollisionEvent e) {
+                // ea.actor.Actor o = e.getColliding();
+                // if(o instanceof ea.actor.Circle) {
+                    // erhoeheNummer();
+                // }
+            // }
+            
+        // });
+    // }
+    
+    
+    
     public void inEngineCollisionDetection() {
-        unten.addCollisionListener(new ea.collision.CollisionListener<ea.actor.Actor>() {
+        detektor.getActor().addCollisionListener(new ea.collision.CollisionListener<ea.actor.Actor>() {
             public void onCollision(ea.collision.CollisionEvent e) {
                 ea.actor.Actor o = e.getColliding();
                 if(o instanceof ea.actor.Circle) {
