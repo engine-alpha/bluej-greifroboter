@@ -7,7 +7,7 @@
  * @version     4.0 (2018-08-07)
  */
 public class Kugel 
-extends KREIS
+extends ea.edu.Kreis
 {
     
     
@@ -18,10 +18,10 @@ extends KREIS
     {
         super( 25 );
         super.setzeMittelpunkt( x , y );
-        super.setzeEbene( 1 );
+        super.getActor().setLayer( 1 );
         super.macheAktiv();
         
-        int zufallszahl = SPIEL.zufallszahlVonBis( 1 , 5 );
+        int zufallszahl = ea.Random.nextInteger( 5 - 1 ) + 1;//SPIEL.zufallszahlVonBis( 1 , 5 );
         switch (zufallszahl)
         {
             case 1: super.setzeFarbe( "rot" ); 

@@ -8,9 +8,9 @@
  */
 public class Greifarm
 {
-    private DREIECK stativ;
-    private KREIS drehpunkt;
-    private RECHTECK arm;
+    private ea.edu.Dreieck stativ;
+    private ea.edu.Kreis drehpunkt;
+    private ea.edu.Rechteck arm;
     private Kugel gegriffeneKugel;
     private int winkel;
     
@@ -27,16 +27,16 @@ public class Greifarm
      */
     public Greifarm()
     {
-        this.stativ = new DREIECK( -50,-300 , 50,-300 , 0,-100 );
+        this.stativ = new ea.edu.Dreieck( -50,-300 , 50,-300 , 0,-100 );
         this.stativ.setzeFarbe( "grau" );
-        this.stativ.setzeEbene( 5 );
+        this.stativ.getActor().setLayer( 5 );
         
-        this.drehpunkt = new KREIS( 15 );
+        this.drehpunkt = new ea.edu.Kreis( 15 );
         this.drehpunkt.setzeFarbe( "grau" );
         this.drehpunkt.setzeMittelpunkt( 0 , -100 );
-        this.drehpunkt.setzeEbene( 5 );
+        this.drehpunkt.getActor().setLayer( 5 );
         
-        this.arm = new RECHTECK( 300 , 10 );
+        this.arm = new ea.edu.Rechteck( 300 , 10 );
         this.arm.setzeFarbe( "grau" );
         this.arm.setzeMittelpunkt( 150 , -100 );
         
@@ -60,7 +60,7 @@ public class Greifarm
     {
         this.winkel += winkel;
         this.winkel %= 360;
-        this.arm.drehenUm( winkel );
+        this.arm.drehen( (float)Math.toRadians(winkel) ); ////////
         this.arm.setzeMittelpunkt( (float)(150*Math.cos(Math.toRadians(this.winkel)))  , (float)(150*Math.sin(Math.toRadians(this.winkel))-100) );
         if ( this.hatKugel )
         {
@@ -73,7 +73,7 @@ public class Greifarm
     {
         if ( !this.hatKugel )
         {
-            if ( this.arm.beruehrt( this.kugeln.peekFirst() ) )
+            if ( this.arm.schneidet( this.kugeln.peekFirst() ) )
             {
                 this.gegriffeneKugel = this.kugeln.removeFirst();
                 this.gegriffeneKugel.macheNeutral();
@@ -174,10 +174,12 @@ public class Greifarm
             {
                 if ( this.gegriffeneKugel.nenneMx() > 222  &&  this.gegriffeneKugel.nenneMx() < 333 )
                 {
+                    this.gegriffeneKugel.setzeMittelpunkt( 2000 , 2000 );
                     this.rechts.erhoeheNummer();
                 }
                 else if ( this.gegriffeneKugel.nenneMx() < -222  &&  this.gegriffeneKugel.nenneMx() > -333 )
                 {
+                    this.gegriffeneKugel.setzeMittelpunkt( 2000 , 2000 );
                     this.links.erhoeheNummer();
                 }
             }

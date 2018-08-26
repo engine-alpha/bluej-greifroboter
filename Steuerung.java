@@ -7,16 +7,16 @@
  * @version     4.0 (2018-08-11)
  */
 public class Steuerung 
-extends SPIEL
+extends ea.edu.Spiel
 {
     private Eimer eimer_links;
     private Eimer eimer_rechts;
     
-    private DREIECK reflektor_LL;
-    private DREIECK reflektor_LR;
+    private ea.edu.Dreieck reflektor_LL;
+    private ea.edu.Dreieck reflektor_LR;
     
-    private DREIECK reflektor_RL;
-    private DREIECK reflektor_RR;
+    private ea.edu.Dreieck reflektor_RL;
+    private ea.edu.Dreieck reflektor_RR;
     
     private Fliessband fliessband;
     
@@ -25,7 +25,7 @@ extends SPIEL
     private Greifarm greifarm;
     
     private int nummer;
-    private TEXT nummernAnzeige;
+    private ea.edu.EduText nummernAnzeige;
     
     private Kugel losgelasseneKugel;
     
@@ -39,20 +39,20 @@ extends SPIEL
         this.eimer_links = new Eimer( -280 , -220 , "rot" );
         this.eimer_rechts = new Eimer( 280 , -220 , "blau" );
         
-        this.reflektor_LL = new DREIECK( -175 , -130 , -175 , -300 , -230 , -300 );
+        this.reflektor_LL = new ea.edu.Dreieck( -175 , -130 , -175 , -300 , -230 , -300 );
         this.reflektor_LL.machePassiv();
         this.reflektor_LL.setzeSichtbar( false );
         this.reflektor_LL.setzeElastizitaet( 0.5f );
-        this.reflektor_LR = new DREIECK( -385 , -130 , -340 , -300 , -385 , -300 );
+        this.reflektor_LR = new ea.edu.Dreieck( -385 , -130 , -340 , -300 , -385 , -300 );
         this.reflektor_LR.machePassiv();
         this.reflektor_LR.setzeSichtbar( false );
         this.reflektor_LR.setzeElastizitaet( 0.5f );
         
-        this.reflektor_RL = new DREIECK( 170 , -130 , 170 , -300 , 225 , -300 );
+        this.reflektor_RL = new ea.edu.Dreieck( 170 , -130 , 170 , -300 , 225 , -300 );
         this.reflektor_RL.machePassiv();
         this.reflektor_RL.setzeSichtbar( false );
         this.reflektor_RL.setzeElastizitaet( 0.5f );
-        this.reflektor_RR = new DREIECK( 380 , -130 , 335 , -300 , 380 , -300 );
+        this.reflektor_RR = new ea.edu.Dreieck( 380 , -130 , 335 , -300 , 380 , -300 );
         this.reflektor_RR.machePassiv();
         this.reflektor_RR.setzeSichtbar( false );
         this.reflektor_RR.setzeElastizitaet( 0.5f );
@@ -70,13 +70,14 @@ extends SPIEL
         this.greifarm.nimmReferenzAufEimer( this.eimer_links , this.eimer_rechts );
         
         this.nummer = 0;
-        this.nummernAnzeige = new TEXT( 0 , 270 , this.nummer );
+        this.nummernAnzeige = new ea.edu.EduText( ""+this.nummer );
+        this.nummernAnzeige.setzeMittelpunkt( 0 , 270 );
         this.nummernAnzeige.setzeGroesse( 30 );
         this.nummernAnzeige.setzeFarbe( "lila" );
         
         this.losgelasseneKugel = new Kugel( 0 , -450 );
         
-        super.tickerAnmelden( this.greifarm , 50 );
+        super.tickerAnmelden( this.greifarm , 1500 );
     }
 
     

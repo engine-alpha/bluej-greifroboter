@@ -9,11 +9,11 @@
 public class Eimer 
 implements ea.edu.EduActor
 {
-    private FIGUR unten;
-    private FIGUR oben;
-    private TEXT beschriftung;
+    private ea.edu.Figur unten;
+    private ea.edu.Figur oben;
+    private ea.edu.EduText beschriftung;
     private int zaehler;
-    private KREIS detektor;
+    private ea.edu.Kreis detektor;
     
 
     /**
@@ -24,34 +24,36 @@ implements ea.edu.EduActor
         
         if ( farbe.equals("rot") )
         {
-            this.oben = new FIGUR( "standard" , "Eimer_rot_oben.png" , 1, 1 );
+            this.oben = new ea.edu.Figur( "standard" , "Eimer_rot_oben.png" , 1, 1 );
             this.oben.setzeMittelpunkt( x , y+78 );
-            this.oben.setzeEbene( 0 );
-            this.unten = new FIGUR( "standard" , "Eimer_rot_unten.png" , 1 , 1 );
+            this.oben.setLayer( 0 );
+            this.unten = new ea.edu.Figur( "standard" , "Eimer_rot_unten.png" , 1 , 1 );
             this.unten.setzeMittelpunkt( x , y );
-            this.unten.setzeEbene( 2 );
-            this.beschriftung = new TEXT( x , y , 0 );
+            this.unten.setLayer( 2 );
+            this.beschriftung = new ea.edu.EduText( "0" );
+            this.beschriftung.setzeMittelpunkt( x , y );
             this.beschriftung.setzeGroesse( 30 );
             this.beschriftung.setzeFarbe( "blau" );
-            this.beschriftung.setzeEbene( 3 );
+            this.beschriftung.setLayer( 3 );
         }
         else 
         {
-            this.oben = new FIGUR( "standard" , "Eimer_blau_oben.png" , 1, 1 );
+            this.oben = new ea.edu.Figur( "standard" , "Eimer_blau_oben.png" , 1, 1 );
             this.oben.setzeMittelpunkt( x , y+78 );
-            this.oben.setzeEbene( 0 );
-            this.unten = new FIGUR( "standard" , "Eimer_blau_unten.png" , 1 , 1 );
+            this.oben.setLayer( 0 );
+            this.unten = new ea.edu.Figur( "standard" , "Eimer_blau_unten.png" , 1 , 1 );
             this.unten.setzeMittelpunkt( x , y );
-            this.unten.setzeEbene( 2 );
-            this.beschriftung = new TEXT( x , y , 0 );
+            this.unten.setLayer( 2 );
+            this.beschriftung = new ea.edu.EduText( "0" );
+            this.beschriftung.setzeMittelpunkt( x , y );
             this.beschriftung.setzeGroesse( 30 );
             this.beschriftung.setzeFarbe( "gelb" );
-            this.beschriftung.setzeEbene( 3 );
+            this.beschriftung.setLayer( 3 );
         }
         
-        this.detektor = new KREIS( 25 );
+        this.detektor = new ea.edu.Kreis( 25 );
         this.detektor.setzeMittelpunkt( x , y-25 );
-        this.detektor.setzeEbene( 1 );
+        this.detektor.getActor().setLayer( 1 );
         
         this.zaehler = 0;
         inEngineCollisionDetection();
@@ -105,7 +107,7 @@ implements ea.edu.EduActor
     public void setzeNummer( int nummer )
     {
         this.zaehler = nummer;
-        this.beschriftung.setzeInhalt( nummer );
+        this.beschriftung.setzeInhalt( ""+nummer );
     }
     
     
